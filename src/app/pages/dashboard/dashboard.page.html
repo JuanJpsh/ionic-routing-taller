@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Dashboard</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">Salir</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list id="inbox-list">
+    <ion-list-header>Courses</ion-list-header>
+    <ion-menu-toggle auto-hide="false" *ngFor="let cour of courses; let i = index">
+      <ion-item (click)="navigateCourse(cour)">
+        <ion-icon aria-hidden="true" slot="start" [ios]="'book-outline'" [md]="'book-sharp'"></ion-icon>
+        <ion-label>Curso {{ cour | uppercase }}</ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+  </ion-list>
+  <router-outlet></router-outlet>
+</ion-content>

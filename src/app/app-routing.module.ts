@@ -3,13 +3,22 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'folder/Inbox',
+    path: 'auth',
+    pathMatch: 'full',
+    loadChildren: () => import('./pages/auth/auth.module').then( m => m.AuthPageModule)
+  },
+  {
+    path: 'dashboard/:id',
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'auth',
     pathMatch: 'full'
   },
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+    path: 'course',
+    loadChildren: () => import('./pages/course/course.module').then( m => m.CoursePageModule)
   }
 ];
 
